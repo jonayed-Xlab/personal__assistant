@@ -8,15 +8,15 @@ import speech_recognition as sr # getting user voice by microphone
 '''
 
 def get_audio():
-    r = sr.Recognizer()
-    audio = ''
+
+    r = sr.Recognizer() 
     with sr.Microphone() as source:
-        print("lisiting...")
-        r.pause_threshold = 0.8
-        audio = r.listen(source,phrase_time_limit = 5)
+        r.energy_threshold = 50
+        print("mimi : lisiting...") 
+        audio = r.listen(source, phrase_time_limit=7)
+        text = ''
     try: 
         text = r.recognize_google(audio,language="en")  
-        print("Recognizing...")
         print("You : ",text)
 
     except Exception as e:

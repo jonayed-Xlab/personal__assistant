@@ -29,9 +29,9 @@ def search_web(text):
 
     elif 'search' in text:
         m.mimi_speak("Opening Google")
-        indx = text.split().index('google')
-        query = text.split()[indx + 1:]
-        driver.get("https://www.google.com/search?q=" + '+'.join(query))
+       # indx = text.split().index('google')
+        #query = text.split()[indx + 1:]
+        driver.get("https://www.google.com/search?q=" + '+'.join(text.split()))
 
     else:
         driver.get("https://www.google.com/search?q=" + '+'.join(text.split()))
