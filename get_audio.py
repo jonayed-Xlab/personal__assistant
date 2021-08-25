@@ -12,8 +12,9 @@ def get_audio():
     r = sr.Recognizer() 
     with sr.Microphone() as source:
         r.energy_threshold = 50
+        r.adjust_for_ambient_noise(source)
         print("mimi : lisiting...") 
-        audio = r.listen(source, phrase_time_limit=7)
+        audio = r.listen(source, phrase_time_limit = 3) 
         text = ''
     try: 
         text = r.recognize_google(audio,language="en")  

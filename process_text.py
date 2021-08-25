@@ -7,6 +7,8 @@ import pc_app_open as app
 import taskbar_access as ta
 import keyboard
 import pyautogui
+import browser
+
 '''
 1.processing user text in program
 '''
@@ -14,7 +16,7 @@ import pyautogui
 
 def process(user_text):
     try:
-        if 'search' in user_text or 'play' in user_text:
+        if 'search' in user_text:
             web.search_web(user_text)
 
         elif "who are you" in user_text or "define yourself" in user_text:
@@ -46,7 +48,7 @@ def process(user_text):
             m.mimi_speak("Maximize Opened Application")
             pyautogui.hotkey('winleft', 'up') 
 
-        elif 'mize' in user_text or 'mise' in user_text or 'mice' in user_text:
+        elif 'middle' in user_text:
             m.mimi_speak("medium Opened Application")
             pyautogui.hotkey('winleft', 'down') 
         
@@ -54,12 +56,31 @@ def process(user_text):
             m.mimi_speak("full Screened Application")
             pyautogui.hotkey('F11') 
 
+        elif 'side' in user_text or 'side right' in user_text or 'side left' in user_text :
+            m.mimi_speak("okey")
+            if 'right' in user_text:
+                pyautogui.hotkey('win','right') 
+                pyautogui.hotkey('enter') 
+            else:
+                pyautogui.hotkey('win','left') 
+                pyautogui.hotkey('enter') 
 
-        else:
-            m.mimi_speak("I can search the web for you, Do you want to continue?")
-            ans = audio.get_audio()
-            if 'yes' in ans or 'yeah' in ans:
-                web.search_web(user_text)          
+        elif 'go' in user_text :
+            m.mimi_speak("contolling your page")
+            browser.browser_access(user_text)
+        
+        elif 'hey mimi' in user_text or 'hello mimi' in user_text or 'mimi' in user_text :
+            m.mimi_speak("I am here for you")
+    
+        elif 'play' in user_text:
+            m.mimi_speak("starting video")
+            pyautogui.click(300,361)
+        elif 'next' in user_text:
+            m.mimi_speak("next video") 
+            pyautogui.click(100,614)
+
+
+             
     except:
        return
                   

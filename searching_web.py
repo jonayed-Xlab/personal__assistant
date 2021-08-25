@@ -1,6 +1,7 @@
 from selenium import webdriver # to control browser operations
 
 
+
 #my files import
 import main_mimi as m
 
@@ -15,6 +16,7 @@ def search_web(text):
         indx = text.split().index('youtube')
         query = text.split()[indx + 1:]
         driver.get("https://www.youtube.com/results?search_query=" + '+'.join(query))
+
         
     elif 'wikipedia' in text:
         m.mimi_speak("Opening Wikipedia")
